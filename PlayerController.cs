@@ -30,5 +30,19 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void OnAwake()
+    {
+        moveAction = InputSystem.actions.FindAction("Move");
+        lookAction = InputSystem.actions.FindAction("Look");
+        jumpAction = InputSystem.actions.FindAction("Jump");
 
+        m_animator = GetComponent<Animator>();
+        m_rigidBody = GetComponent<RigidBody>();
+    }
+
+    private void Update()
+    {
+        movePlayer = moveAction.ReadValue<Vector2>();
+        lookéPlayer = lookAction.ReadValue<Vector2>();
+    }
 }
