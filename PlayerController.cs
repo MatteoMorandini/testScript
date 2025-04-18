@@ -69,4 +69,16 @@ public class PlayerController : MonoBehaviour
         m_rigidBody.MovePosition(m_rigidBody.position + transform.forward * movePlayer.y * walkSpeed * Time.deltaTime);
     
     }
+
+    private void rotating ()
+    {
+        if (movePlayer.y != 0)
+        {
+            float rotationAmount = lookPlayer * rotateSpeed * Time.deltaTime;
+            
+            Quaternion deltaRotation = Qauternion.Euler(0,  rotationAmount, 0);
+
+            m_rigidBody.moveRotation(m_rigidBody.rotation * deltaRotation);
+        }
+    }
 }
