@@ -55,7 +55,18 @@ public class PlayerController : MonoBehaviour
     {
         m_rigidBody.AddForceFoPosition(new Vecotr3(0, 5f, 0), Vecotr3.up, ForceMode.Impulse);
         m_animator.setTrigger("Jump");
+    }
 
+    private void FixUpdate()
+    {
+        walking();
+        rotating();
+    }
 
+    private void walking()
+    {
+        m_animator.SetFlaot("Speed");
+        m_rigidBody.MovePosition(m_rigidBody.position + transform.forward * movePlayer.y * walkSpeed * Time.deltaTime);
+    
     }
 }
