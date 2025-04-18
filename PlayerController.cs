@@ -44,5 +44,18 @@ public class PlayerController : MonoBehaviour
     {
         movePlayer = moveAction.ReadValue<Vector2>();
         lookéPlayer = lookAction.ReadValue<Vector2>();
+
+        if(jumpActio.WasPressedThisFrame())
+        {
+            jump();
+        }
+    }
+
+    private void jump()
+    {
+        m_rigidBody.AddForceFoPosition(new Vecotr3(0, 5f, 0), Vecotr3.up, ForceMode.Impulse);
+        m_animator.setTrigger("Jump");
+
+
     }
 }
